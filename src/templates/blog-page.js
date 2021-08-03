@@ -11,19 +11,18 @@ import parse from "html-react-parser"
 // import "../css/@wordpress/block-library/build-style/style.scss"
 // import "../css/@wordpress/block-library/build-style/theme.css"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const BlogPostTemplate = ({ data: { previous, next, post } }) => {
+const BlogPageTemplate = ({ data: { post: page } }) => {
   const featuredImage = {
-    fluid: post.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
-    alt: post.featuredImage?.node?.alt || ``,
+    fluid: page.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
+    alt: page.featuredImage?.node?.alt || ``,
   }
 
   return (
     <Layout>
-      <Seo title={post.title} />
+      <Seo title={page.title} description={page.excerpt} />
 
       <article
         className="blog-post"
@@ -31,9 +30,9 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{parse(post.title)}</h1>
+          <h1 itemProp="headline">{parse(page.title)}</h1>
 
-          <p>{post.date}</p>
+          <p>{page.date}</p>
 
           {/* if we have a featured image for this post let's display it */}
           {featuredImage?.fluid && (
@@ -44,24 +43,20 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
           )}
         </header>
 
-        {!!post.content && (
-          <section itemProp="articleBody">{parse(post.content)}</section>
+        {!!page.content && (
+          <section itemProp="articleBody">{parse(page.content)}</section>
         )}
 
         <hr />
-
-        <footer>
-          <Bio />
-        </footer>
       </article>
     </Layout>
   );
 }
 
-export default BlogPostTemplate
+export default BlogPageTemplate
 
-export const pageQuery = graphql`query BlogPostById($id: String!) {
-  post: wpPost(id: {eq: $id}) {
+export const pageQuery = graphql`query BlogPageById($id: String!) {
+  post: wpPage(id: {eq: $id}) {
     id
     content
     title

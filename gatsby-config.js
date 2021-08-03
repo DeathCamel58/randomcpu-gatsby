@@ -28,7 +28,7 @@ module.exports = {
         // the only required plugin option for WordPress is the GraphQL url.
         url:
           process.env.WPGRAPHQL_URL ||
-          `https://wpgatsbydemo.wpengine.com/graphql`,
+          `https://randomcpu.com/graphql`,
       },
     },
 
@@ -58,12 +58,13 @@ module.exports = {
       // See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter WordPress Blog`,
-        short_name: `GatsbyJS & WP`,
+        name: `Random CPU`,
+        short_name: `Random CPU`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
+        // TODO: Update Gatsby Site Icon
         icon: `content/assets/gatsby-icon.png`,
       },
     },
@@ -76,5 +77,8 @@ module.exports = {
      * To learn more, visit: https://gatsby.dev/offline
      */
     // `gatsby-plugin-offline`,
+
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-image`,
   ],
 }

@@ -1,3 +1,17 @@
+@import 'scss-parts/layout.scss';
+
+.article-card {
+  margin-bottom: 3em;
+}
+
+.no-underline-link {
+  text-decoration: none !important;
+}
+
+.pull-right {
+  text-align: right;
+}
+
 /* CSS Custom Properties Definitions */
 
 :root {
@@ -240,20 +254,6 @@ a:focus {
 }
 
 /* Custom classes */
-
-.global-wrapper {
-  margin: var(--spacing-0) auto;
-  max-width: var(--maxWidth-wrapper);
-  padding: var(--spacing-10) var(--spacing-5);
-}
-
-.global-wrapper[data-is-root-path="true"] .bio {
-  margin-bottom: var(--spacing-20);
-}
-
-.global-header {
-  margin-bottom: var(--spacing-12);
-}
 
 .main-heading {
   font-size: var(--fontSize-7);
